@@ -1,0 +1,44 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.example.sqlitedemo.MainActivity" >
+     <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:icon="@drawable/set2"
+        android:title="@string/action_settings"/>
+       <item
+        android:id="@+id/action_listloop"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:icon="@drawable/icon_listcricl"
+        android:title="@string/action_listloop"/>
+         <item
+        android:id="@+id/action_listorder"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:icon="@drawable/icon_listorder"
+        android:title="@string/action_listorder"/>
+           <item
+        android:id="@+id/action_random"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:icon="@drawable/icon_random"
+        android:title="@string/action_random"/>
+             <item
+        android:id="@+id/action_signleloop"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:icon="@drawable/icon_siglecricl"
+        android:title="@string/action_signleloop"/>
+               <item
+        android:id="@+id/action_signleorder"
+        android:orderInCategory="100"
+        android:showAsAction="never"
+        android:icon="@drawable/icon_sigleorder"
+        android:title="@string/action_signleorder"/>
+               
+         
+
+</menu>

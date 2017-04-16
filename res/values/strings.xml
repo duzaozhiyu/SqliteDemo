@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MusicPlayer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_listorder">列表顺序</string>
+    <string name="action_random">随机</string>
+    <string name="action_signleorder">单曲顺序</string>
+    <string name="action_signleloop">单曲循环</string>
+    <string name="action_listloop">列表循环</string>
+     <string name="action_settings">设置</string>
+    
+
+</resources>
