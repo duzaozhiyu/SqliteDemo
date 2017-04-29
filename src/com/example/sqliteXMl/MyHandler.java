@@ -15,11 +15,6 @@ public class MyHandler extends DefaultHandler {
 	{
 		return mmd;
 	}
-//	public MyHandler()
-//	{
-//		mmd=new MyMusicData();
-//		sb=new StringBuffer();
-//	}
 //	
 	
 	

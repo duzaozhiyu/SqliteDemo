@@ -1,4 +1,7 @@
 package com.example.sqlitehelper;
+
+import java.io.Serializable;
+
 /**
  * 
  * @author duzaozhiyu
@@ -10,7 +13,7 @@ package com.example.sqlitehelper;
  *  selectionArgs: selection 有？就用到
  *  SortOrder: 指定查询结果排列顺序
  */
-public class MyMusicData {
+public class MyMusicData implements Serializable {
 	/*
 	 *   id
 	 *   title 歌曲名称

@@ -100,16 +100,12 @@ public class MainActivity extends Activity {
         //用于更新UI和数据处理
         mmtu_nos=new MyMusicToolUI(this);
 
-        //设置MyMusicData;
-//        if(MyMusicToolPlay.state==-1)//不要跟service 中的更新冲突
-//        {
         	mmd=mmtu_nos.readXML();
             if(mmd!=null)
             {
                  setInit(mmd, layout);
                  tv_endTime.setText(setEndTimeFormat(mmd.getTime()));
             }
-//        }
         
        
         //查询的内容
@@ -152,11 +148,6 @@ public class MainActivity extends Activity {
         	};
         };
         
-        
-        
-          
-//      //list设置adapter同时返回一个adapter 
-//        mmtp.setAdapter(mmtu_nos.setListadapter(list));
         mbAdapter=mmtu_nos.setListadapter(list);
       
        ib =(ImageButton) layout.findViewById(R.id.ib_low_play);
@@ -190,15 +181,10 @@ public class MainActivity extends Activity {
 			mmtp.play(mmtp.getMyMusicData().getData());
 			ib.setImageDrawable(getResources().getDrawable(R.drawable.music_pause));
 		    Toast.makeText(MainActivity.this, "bo", Toast.LENGTH_SHORT).show();
-		    //
-		    //sBar.setMax((int) (mmd.getTime()));
 		    sBar.setMax((int) (mmtp.getMyMusicData().getTime()));
 		    stopTimer();
 		    startTimer();
 		    tv_endTime.setText(setEndTimeFormat(mmtp.getMyMusicData().getTime()));
-		    //smmtPlay=null;//强制释放；
-		    
-//		    System.out.println(mmd.getTitle()+">>>>>>>>."+mmd.getArtist());
 			}
 		});
         //播放按钮
@@ -303,7 +289,7 @@ public class MainActivity extends Activity {
 			}
 		});
 
-        
+        //跳转歌词界面
         image_album=(ImageView) layout.findViewById(R.id.imageview);
         image_album.setOnClickListener(new View.OnClickListener() {
 			
@@ -311,11 +297,14 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(MainActivity.this,FragmentActivity.class);
+				Bundle bundle=new Bundle();
+				
+				bundle.putSerializable("MusicData", mmtp.getMyMusicData());
+				intent.putExtra("MyMusicData",bundle);
 				startActivity(intent);
 			}
 		});
-        
-       // MyMusicToolPlay.state=-1;
+      
     }
 	
 	
@@ -349,14 +338,12 @@ public class MainActivity extends Activity {
 								myhandler.sendMessage(message);
 							};
 						}.start();
-//						
-						
+//												
 						System.out.println("改变");
 					}
 					if(mService==null)
 					{
-						mService=msc.getMyService();
-						
+						mService=msc.getMyService();						
 						return;
 					}
 					else
