@@ -2,13 +2,15 @@ package com.example.sqliteimageview;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
@@ -44,12 +46,20 @@ public class MyRoundImageView extends ImageView {
 //			
 //		}
 		Drawable drawable=getDrawable();
-		if(drawable instanceof BitmapDrawable ||drawable!=null)
+		if(drawable instanceof BitmapDrawable)
 		{
 			bitmap=((BitmapDrawable)drawable).getBitmap();
-		}else
-		{
-			
+		}
+		
+		else if (drawable instanceof ColorDrawable){
+			        Rect rect = drawable.getBounds();
+		         int width = rect.right - rect.left;
+	            int height = rect.bottom - rect.top;
+			        int color = ((ColorDrawable)drawable).getColor();
+		            Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+			        Canvas canvasa = new Canvas(bitmap);
+		           canvas.drawARGB(Color.alpha(color), Color.red(color), Color.green(color), Color.blue(color));
+
 		}
 		
 		if(bitmap!=null)
@@ -63,9 +73,12 @@ public class MyRoundImageView extends ImageView {
 			{
 				shader=new BitmapShader(bitmap, TileMode.CLAMP, TileMode.CLAMP);
 			}
-			matrix.setScale(bitWidth/bitmap.getWidth(), bitHeight/bitmap.getHeight());
-			shader.setLocalMatrix(matrix);
-			canvas.drawCircle(viewWidth/2, viewHeight/2, (float) (minSize/2-5.0), mPaint);
+			matrix.setScale(bitWidth/bitmap.getWidth(),bitHeight/bitmap.getHeight());
+			//matrix.setScale(0.4f,0.4f);
+			shader.setLocalMatrix(matrix);//设置图片的缩放
+			mPaint.setShader(shader);//设置圆形的内容
+			
+			canvas.drawCircle(viewWidth/2, viewHeight/2, (float) (minSize/2), mPaint);
 
 		}
 		

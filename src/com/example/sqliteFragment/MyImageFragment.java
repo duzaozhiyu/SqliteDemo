@@ -32,7 +32,6 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	   {
 		   image.setImageBitmap(map); 
 	   }	   
-	   //image.draw(canvas);
 	   return view;
 }  
    public Bitmap setBitmap(String filepath)
@@ -41,6 +40,10 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	    {
 	    	return null;
 	    }
+	   
+	    //BitmapFactory.Options options=new BitmapFactory.Options();
+	    //options.inSampleSize=2;
+	    //Bitmap map=BitmapFactory.decodeFile("mnt/sdcard/2.jpg",options);
 	    Bitmap map=BitmapFactory.decodeFile(filepath);
 	    return map;
 	}

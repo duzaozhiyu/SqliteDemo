@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sqliteFragment.FragmentActivity;
+import com.example.sqliteXMl.MyXmlTool;
 import com.example.sqlitehelper.MyBaseAdapter;
 import com.example.sqlitehelper.MyMusicData;
 import com.example.sqlitehelper.MyMusicToolPlay;
@@ -298,8 +299,15 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent intent=new Intent(MainActivity.this,FragmentActivity.class);
 				Bundle bundle=new Bundle();
-				
-				bundle.putSerializable("MusicData", mmtp.getMyMusicData());
+				if(mmtp==null||mmtp.getMyMusicData()==null)
+				{
+					bundle.putSerializable("MusicData", mmd);
+				}
+				else
+				{
+					bundle.putSerializable("MusicData", mmtp.getMyMusicData());
+				}
+				//
 				intent.putExtra("MyMusicData",bundle);
 				startActivity(intent);
 			}
